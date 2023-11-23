@@ -102,6 +102,6 @@ jobs:
         - name: Build storybook and extract storiees
           run: npm run pretest:vrt
         - name: Run your tests
-          run: npx playwright test --config ./tests/playwright/playwright.config.js --workers=4 --shard ${{ matrix.shard }}
+          run: npx playwright test --config ./tests/playwright/playwright.config.js --workers=5 --shard ${{ matrix.shard }}
           env:
             HOME: /root
