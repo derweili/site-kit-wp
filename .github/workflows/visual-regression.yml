@@ -93,5 +93,7 @@ jobs:
             node-version: 14
         - name: Install dependencies
           run: npm ci
+        - name: Build storybook and extract storiees
+          run: npm run pretest:vrt
         - name: Run your tests
           run: npx playwright test --config ./tests/playwright/playwright.config.js
