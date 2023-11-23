@@ -6,7 +6,8 @@ const deviceScaleFactor = 2;
 const locale = 'en-us';
 
 const config = {
-	testDir: 'tests/playwright',
+	testDir: './',
+	outputDir: './test-results',
 	// note: full options are specified because `devices`
 	// have inconsistent viewports, etc.
 	projects: [

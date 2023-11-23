@@ -5,11 +5,13 @@ import path from 'path';
 
 import scenarios from './scenarios.json';
 
-// turn storiesData.stories object into array
-// const stories = Object.keys( storiesData.stories );
-
 const basePath = path.resolve( __dirname, '../../' );
 
+/**
+ * Run tests in parallel
+ *
+ * By default, Playwright runs tests from the same file serially.
+ */
 test.describe.configure( { mode: 'parallel' } );
 
 scenarios.forEach( ( story ) => {
