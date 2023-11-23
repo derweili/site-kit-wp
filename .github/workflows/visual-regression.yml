@@ -58,3 +58,40 @@ jobs:
             tests/backstop/html_report
             tests/backstop/reference
             tests/backstop/tests
+  visual-playwright-docker:
+    name: Run Playwright VRT Docker
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    if: github.event.pull_request.draft == false
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Node.js (.nvmrc)
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'npm'
+      - name: npm install
+        run: npm ci
+      - name: Run Backstopjs
+        run: npm run test:vrt
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        if: failure()
+        with:
+          name: vrt-report
+          path: |
+            tests/playwright/test-results
+  playwright:
+      name: 'Run Playwright VRT Action'
+      runs-on: ubuntu-latest
+      container:
+        image: mcr.microsoft.com/playwright:v1.40.0-jammy
+      steps:
+        - uses: actions/checkout@v3
+        - uses: actions/setup-node@v3
+          with:
+            node-version: 14
+        - name: Install dependencies
+          run: npm ci
+        - name: Run your tests
+          run: npx playwright test --config ./tests/playwright/playwright.config.js
