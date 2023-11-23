@@ -42,4 +42,8 @@ module.exports = {
 		return head;
 	},
 	staticDirs: [ '../dist' ],
+	// features: {
+	// 	// eslint-disable-next-line sitekit/acronym-case
+	// 	buildStoriesJson: true,
+	// },
 };
