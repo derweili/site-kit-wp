@@ -22,7 +22,7 @@ IMAGE=mcr.microsoft.com/playwright:$VERSION
 
 
 # Run the backstopjs command.
-docker run --rm -t  -it -v ./:/src/ -w /src/ $IMAGE $1
+docker run --rm -t  -v ./:/src/ -w /src/ $IMAGE $1
 
 DOCKER_EXIT_CODE=$?
 
